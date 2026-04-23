@@ -6,7 +6,7 @@ app.get('/', (req, res) => {
         <!DOCTYPE html>
         <html>
         <head>
-            <title> Jupiter Proxy - Type Any URL</title>
+            <title>🌍 Web Proxy - Click Anything!</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <style>
                 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -20,9 +20,9 @@ app.get('/', (req, res) => {
                 .toolbar {
                     background: rgba(0,0,0,0.85);
                     backdrop-filter: blur(10px);
-                    padding: 15px 20px;
+                    padding: 12px 20px;
                     display: flex;
-                    gap: 12px;
+                    gap: 10px;
                     align-items: center;
                     flex-wrap: wrap;
                     border-bottom: 1px solid rgba(255,255,255,0.1);
@@ -33,14 +33,14 @@ app.get('/', (req, res) => {
                     gap: 8px;
                     background: white;
                     border-radius: 60px;
-                    padding: 5px 5px 5px 25px;
+                    padding: 4px 4px 4px 20px;
                     align-items: center;
                 }
                 .url-box input {
                     flex: 1;
                     border: none;
-                    padding: 14px 0;
-                    font-size: 16px;
+                    padding: 12px 0;
+                    font-size: 15px;
                     outline: none;
                     font-family: monospace;
                 }
@@ -48,37 +48,23 @@ app.get('/', (req, res) => {
                     background: #3b82f6;
                     border: none;
                     color: white;
-                    padding: 10px 28px;
+                    padding: 8px 24px;
                     border-radius: 60px;
                     cursor: pointer;
                     font-weight: bold;
-                    font-size: 14px;
+                    font-size: 13px;
                     transition: all 0.2s;
                 }
-                button:hover {
-                    background: #2563eb;
-                    transform: scale(0.97);
-                }
-                .nav-btn {
-                    background: #475569;
-                }
-                .nav-btn:hover {
-                    background: #334155;
-                }
-                .viewport {
-                    flex: 1;
-                    background: white;
-                }
-                iframe {
-                    width: 100%;
-                    height: 100%;
-                    border: none;
-                }
+                button:hover { background: #2563eb; transform: scale(0.97); }
+                .nav-btn { background: #475569; }
+                .nav-btn:hover { background: #334155; }
+                .viewport { flex: 1; background: white; }
+                iframe { width: 100%; height: 100%; border: none; }
                 .quick-links {
                     background: #0f172a;
-                    padding: 8px 20px;
+                    padding: 6px 20px;
                     display: flex;
-                    gap: 15px;
+                    gap: 12px;
                     flex-wrap: wrap;
                     border-top: 1px solid #1e293b;
                 }
@@ -86,27 +72,17 @@ app.get('/', (req, res) => {
                     color: #94a3b8;
                     cursor: pointer;
                     text-decoration: none;
-                    font-size: 13px;
-                    padding: 5px 12px;
+                    font-size: 12px;
+                    padding: 4px 10px;
                     border-radius: 20px;
                     transition: 0.2s;
                 }
-                .quick-links a:hover {
-                    background: #1e293b;
-                    color: white;
-                }
-                .status {
-                    background: #10b981;
-                    color: white;
-                    padding: 5px 14px;
-                    border-radius: 30px;
-                    font-size: 12px;
-                    font-weight: bold;
-                }
+                .quick-links a:hover { background: #1e293b; color: white; }
+                .status { background: #10b981; color: white; padding: 4px 12px; border-radius: 30px; font-size: 11px; font-weight: bold; }
                 @media (max-width: 600px) {
-                    .toolbar { padding: 10px; }
-                    button { padding: 8px 18px; font-size: 12px; }
-                    .url-box input { font-size: 13px; }
+                    .toolbar { padding: 8px 12px; }
+                    button { padding: 6px 16px; font-size: 11px; }
+                    .url-box input { font-size: 12px; }
                 }
             </style>
         </head>
@@ -115,22 +91,19 @@ app.get('/', (req, res) => {
                 <button class="nav-btn" id="backBtn">◀ Back</button>
                 <button class="nav-btn" id="forwardBtn">Forward ▶</button>
                 <div class="url-box">
-                    <span style="font-size:18px;">🌐</span>
-                    <input type="text" id="urlInput" placeholder="Type any URL... youtube.com, google.com, reddit.com" value="example.com">
+                    <span style="font-size:16px;">🌐</span>
+                    <input type="text" id="urlInput" placeholder="youtube.com" value="example.com">
                     <button id="goBtn">Go</button>
                 </div>
-                <div class="status">● LIVE</div>
+                <div class="status">● CLICK ANY LINK</div>
             </div>
             <div class="quick-links">
-                <span style="color:#64748b;">Try these:</span>
-                <a onclick="loadSite('example.com')">📄 Example</a>
-                <a onclick="loadSite('youtube.com')">📺 YouTube</a>
-                <a onclick="loadSite('google.com')">🔍 Google</a>
-                <a onclick="loadSite('reddit.com')">🤖 Reddit</a>
-                <a onclick="loadSite('github.com')">💻 GitHub</a>
-                <a onclick="loadSite('wikipedia.org')">📚 Wikipedia</a>
-                <a onclick="loadSite('x.com')">🐦 X/Twitter</a>
-                <a onclick="loadSite('instagram.com')">📷 Instagram</a>
+                <span style="color:#64748b;">Try:</span>
+                <a onclick="loadSite('example.com')">Example</a>
+                <a onclick="loadSite('youtube.com')">YouTube</a>
+                <a onclick="loadSite('google.com')">Google</a>
+                <a onclick="loadSite('reddit.com')">Reddit</a>
+                <a onclick="loadSite('wikipedia.org')">Wikipedia</a>
             </div>
             <div class="viewport">
                 <iframe id="proxyFrame" sandbox="allow-same-origin allow-scripts allow-popups allow-forms allow-modals allow-top-navigation allow-downloads"></iframe>
@@ -144,20 +117,11 @@ app.get('/', (req, res) => {
                 
                 function loadSite(url) {
                     if (!url) return;
-                    
-                    // Clean up the URL
                     url = url.trim();
-                    if (!url.startsWith('http://') && !url.startsWith('https://')) {
-                        url = 'https://' + url;
-                    }
-                    
-                    // Update input field
+                    if (!url.startsWith('http')) url = 'https://' + url;
                     urlInput.value = url.replace('https://', '').replace('http://', '');
-                    
-                    // Load in iframe
                     iframe.src = '/proxy?url=' + encodeURIComponent(url);
                     
-                    // Update history
                     if (historyStack[historyIndex] !== url) {
                         historyStack = historyStack.slice(0, historyIndex + 1);
                         historyStack.push(url);
@@ -173,7 +137,6 @@ app.get('/', (req, res) => {
                         iframe.src = '/proxy?url=' + encodeURIComponent(url);
                     }
                 }
-                
                 function goForward() {
                     if (historyIndex < historyStack.length - 1) {
                         historyIndex++;
@@ -183,23 +146,18 @@ app.get('/', (req, res) => {
                     }
                 }
                 
-                // Event listeners
-                document.getElementById('goBtn').onclick = () => {
-                    const val = urlInput.value.trim();
-                    if (val) loadSite(val);
-                };
-                
+                document.getElementById('goBtn').onclick = () => loadSite(urlInput.value);
                 document.getElementById('backBtn').onclick = goBack;
                 document.getElementById('forwardBtn').onclick = goForward;
+                urlInput.onkeypress = (e) => e.key === 'Enter' && loadSite(urlInput.value);
                 
-                urlInput.onkeypress = (e) => {
-                    if (e.key === 'Enter') {
-                        const val = urlInput.value.trim();
-                        if (val) loadSite(val);
+                // Listen for clicks inside iframe (navigation)
+                window.addEventListener('message', (event) => {
+                    if (event.data && event.data.type === 'navigate') {
+                        loadSite(event.data.url);
                     }
-                };
+                });
                 
-                // Load default
                 loadSite('example.com');
             </script>
         </body>
@@ -207,7 +165,7 @@ app.get('/', (req, res) => {
     `);
 });
 
-// Proxy endpoint - handles ANY website
+// Proxy endpoint - rewrites ALL links so you can click anything
 app.get('/proxy', async (req, res) => {
     let targetUrl = req.query.url;
     
@@ -215,8 +173,7 @@ app.get('/proxy', async (req, res) => {
         return res.status(400).send('No URL provided');
     }
     
-    // Add https if missing
-    if (!targetUrl.startsWith('http://') && !targetUrl.startsWith('https://')) {
+    if (!targetUrl.startsWith('http')) {
         targetUrl = 'https://' + targetUrl;
     }
     
@@ -233,11 +190,57 @@ app.get('/proxy', async (req, res) => {
         
         let html = await response.text();
         
-        // Fix relative links and resources
+        // Get the base URL for rewriting relative paths
         const baseUrl = targetUrl;
-        html = html.replace(/(href|src)="\//g, `$1="${baseUrl}/`);
-        html = html.replace(/(href|src)='\//g, `$1='${baseUrl}/`);
-        html = html.replace(/(action)="\//g, `$1="${baseUrl}/`);
+        
+        // COMPLETE LINK REWRITING - makes every click go through the proxy
+        html = html.replace(/(href|src|action)=["']([^"']*)["']/gi, (match, attr, url) => {
+            if (!url || url.startsWith('#') || url.startsWith('javascript:') || url.startsWith('data:')) {
+                return match;
+            }
+            
+            let absoluteUrl;
+            try {
+                absoluteUrl = new URL(url, baseUrl).href;
+            } catch(e) {
+                return match;
+            }
+            
+            // Skip if it's already our proxy
+            if (absoluteUrl.includes('/proxy?url=')) return match;
+            
+            return `${attr}="/proxy?url=${encodeURIComponent(absoluteUrl)}"`;
+        });
+        
+        // Inject a script to capture all navigation and make it work
+        const interceptorScript = `
+        <script>
+            (function() {
+                // Intercept all link clicks
+                document.addEventListener('click', function(e) {
+                    let link = e.target.closest('a');
+                    if (link && link.href && link.href.includes('/proxy?url=')) {
+                        e.preventDefault();
+                        window.parent.postMessage({ type: 'navigate', url: link.href }, '*');
+                    }
+                }, true);
+                
+                // Intercept form submissions
+                document.addEventListener('submit', function(e) {
+                    let form = e.target;
+                    if (form.action && form.action.includes('/proxy?url=')) {
+                        e.preventDefault();
+                        window.parent.postMessage({ type: 'navigate', url: form.action }, '*');
+                    }
+                }, true);
+                
+                console.log('✅ Proxy interceptor active - clicking links works now!');
+            })();
+        </script>
+        `;
+        
+        // Insert the interceptor before closing body tag
+        html = html.replace('</body>', interceptorScript + '</body>');
         
         res.send(html);
         
@@ -250,7 +253,7 @@ app.get('/proxy', async (req, res) => {
                 <title>Proxy Error</title>
                 <style>
                     body { font-family: system-ui, sans-serif; padding: 40px; text-align: center; background: #f1f5f9; }
-                    .error-box { max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+                    .error-box { max-width: 500px; margin: 0 auto; background: white; padding: 30px; border-radius: 20px; }
                     h2 { color: #dc2626; margin-bottom: 20px; }
                     input { padding: 10px; width: 70%; margin: 10px; border: 1px solid #ccc; border-radius: 8px; }
                     button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 8px; cursor: pointer; }
@@ -261,9 +264,8 @@ app.get('/proxy', async (req, res) => {
                     <h2>⚠️ Cannot Load Website</h2>
                     <p><strong>${escapeHtml(targetUrl)}</strong></p>
                     <p style="color: #64748b;">Error: ${escapeHtml(error.message)}</p>
-                    <hr style="margin: 20px 0;">
-                    <p>💡 Try a different URL:</p>
-                    <input type="text" id="newUrl" placeholder="youtube.com" value="example.com">
+                    <hr>
+                    <input type="text" id="newUrl" placeholder="example.com" value="example.com">
                     <button onclick="window.location.href='/proxy?url=' + encodeURIComponent(document.getElementById('newUrl').value)">Try Again</button>
                     <p style="margin-top: 20px;"><a href="/" style="color: #3b82f6;">← Back to Home</a></p>
                 </div>
@@ -292,5 +294,4 @@ function escapeHtml(str) {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`✅ Proxy running on port ${PORT}`);
-    console.log(`📱 Open http://localhost:${PORT}`);
 });
